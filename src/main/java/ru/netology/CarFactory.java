@@ -7,7 +7,8 @@ import java.util.Random;
 
 public class CarFactory extends Thread {
 
-    private final int TIME_TO_CONSTRUCT_MS = 450;
+    private final int TIME_TO_CONSTRUCT_MS = 500;
+
 
     @Override
     public void run() {
@@ -15,9 +16,9 @@ public class CarFactory extends Thread {
         while (!isInterrupted()) {
 
             try {
-                System.out.println("Конструируем новый автомобиль");
                 Thread.sleep(TIME_TO_CONSTRUCT_MS);
-                CarShop.get().addCarFromFactory(new Car(createRandomBrand()));
+                System.out.println("Новый автомобиль выпущен");
+                CarShop.get().addCarFromFactory(new Car(randomBrand()));
 
             } catch (InterruptedException ignored) {
             }
@@ -26,7 +27,7 @@ public class CarFactory extends Thread {
 
     }
 
-    private CarBrand createRandomBrand() {
+    private CarBrand randomBrand() {
 
         CarBrand carBrand;
         Random rand = new Random();

@@ -2,7 +2,7 @@ package ru.netology;
 
 public class Customer extends Thread {
 
-    private final int TIME_TO_CHOICE = 400;
+    private final int TIME_TO_CHOICE = 150;
 
     public Customer(String threadName) {
         super(threadName);
@@ -13,6 +13,7 @@ public class Customer extends Thread {
 
         while (!isInterrupted()) {
             try {
+
                 Thread.sleep(TIME_TO_CHOICE);
                 System.out.println(Thread.currentThread().getName() + " вошел в магазин");
                 CarShop.get().sellCar();
